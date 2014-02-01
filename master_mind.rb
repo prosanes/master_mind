@@ -1,0 +1,3 @@
+def answer
+	false
+end
