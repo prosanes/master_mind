@@ -91,4 +91,24 @@ describe SecretCodeHolder do
 		end
 	end
 
+	context "answer '+'s and '-'s correctly" do
+		it "code is ABCD guess is ACDB" do
+			sch = SecretCodeHolder.new(secret_code: "ABCD")
+			clue = sch.get_clue_based_on(guess: "ACDB")
+			expect(clue).to eq("+---")
+		end
+
+		it "code is ABCD guess is AAAA" do
+			sch = SecretCodeHolder.new(secret_code: "ABCD")
+			clue = sch.get_clue_based_on(guess: "AAAA")
+			expect(clue).to eq("+")
+		end
+
+		it "code is ABCD guess is BBBB" do
+			sch = SecretCodeHolder.new(secret_code: "ABCD")
+			clue = sch.get_clue_based_on(guess: "BBBB")
+			expect(clue).to eq("+")
+		end
+	end
+
 end
