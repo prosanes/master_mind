@@ -25,14 +25,16 @@ describe SecretCodeHolder do
 		expect(clue).to eq("")
 	end
 
-	it "answers one '+' if there is only one letter in the correct position" do
-		sch = SecretCodeHolder.new(secret_code: "ABCD")
+	context "answers '+'s correctely" do
+		it "answers one '+' if there is only one letter in the correct position" do
+			sch = SecretCodeHolder.new(secret_code: "ABCD")
 
-		clue = sch.get_clue_based_on(guess: "A___")
-		expect(clue.scan("+").count).to eq(1)
+			clue = sch.get_clue_based_on(guess: "A___")
+			expect(clue.scan("+").count).to eq(1)
 
-		clue = sch.get_clue_based_on(guess: "_B__")
-		expect(clue.scan("+").count).to eq(1)
+			clue = sch.get_clue_based_on(guess: "_B__")
+			expect(clue.scan("+").count).to eq(1)
+		end
 	end
 
 end
