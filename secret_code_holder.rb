@@ -35,6 +35,7 @@ class SecretCodeHolder
 				if guess_char == @secret_code[i] and not already_inspectioned[i]
 					clue << "-"
 					already_inspectioned[i] = true
+					break
 				end
 			end
 		end

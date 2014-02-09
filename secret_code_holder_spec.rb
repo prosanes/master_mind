@@ -109,6 +109,18 @@ describe SecretCodeHolder do
 			clue = sch.get_clue_based_on(guess: "BBBB")
 			expect(clue).to eq("+")
 		end
+
+		it "code is AABB guess is BCDE" do
+			sch = SecretCodeHolder.new(secret_code: "AABB")
+			clue = sch.get_clue_based_on(guess: "BCDE")
+			expect(clue).to eq("-")
+		end
+
+		it "code is AABB guess is BBAC" do
+			sch = SecretCodeHolder.new(secret_code: "AABB")
+			clue = sch.get_clue_based_on(guess: "BBAC")
+			expect(clue).to eq("---")
+		end
 	end
 
 end
