@@ -54,8 +54,12 @@ describe SecretCodeHolder do
 			clue = sch.get_clue_based_on(guess: "_BCD")
 			expect(clue.scan("+").count).to eq(3)
 
-			clue = sch.get_clue_based_on(guess: "A_CD")
-			expect(clue.scan("+").count).to eq(3)
+			answers_the_correct_count_of_pluses("A_CD")
+		end
+
+		def answers_the_correct_count_of_pluses(guess: nil, num_plusses: nil) do
+			clue = sch.get_clue_based_on(guess: guess)
+			expect(clue.scan("+").count).to eq(num_plusses)
 		end
 	end
 
@@ -63,7 +67,8 @@ describe SecretCodeHolder do
 		let(:sch) { SecretCodeHolder.new(secret_code: "ABCD") }
 
 		it "answers 1 '-' if there is only one letter in the code but in the wrong position" do
-
+			clue = sch.get_clue_based_on(guess: "ABC_")
+			expect(clue.scan("+").count).to eq(3)
 		end
 	end
 
