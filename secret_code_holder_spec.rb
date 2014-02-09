@@ -35,6 +35,19 @@ describe SecretCodeHolder do
 			clue = sch.get_clue_based_on(guess: "_B__")
 			expect(clue.scan("+").count).to eq(1)
 		end
+
+		it "answers 2 '+' if there is 2 letters in the correct position" do
+			sch = SecretCodeHolder.new(secret_code: "ABCD")
+
+			clue = sch.get_clue_based_on(guess: "AB__")
+			expect(clue.scan("+").count).to eq(2)
+
+			clue = sch.get_clue_based_on(guess: "_BC_")
+			expect(clue.scan("+").count).to eq(2)
+
+			clue = sch.get_clue_based_on(guess: "A__D")
+			expect(clue.scan("+").count).to eq(2)
+		end
 	end
 
 end

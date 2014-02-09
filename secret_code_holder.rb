@@ -4,15 +4,12 @@ class SecretCodeHolder
 	end
 
 	def get_clue_based_on(guess:guess)
-		if guess == @secret_code
-			return "++++"
-		else
-			guess.split("").each_index do |i|
-				if guess[i] == @secret_code[i]
-					return "+"
-				end
+		clue = ""
+		guess.split("").each_index do |i|
+			if guess[i] == @secret_code[i]
+				clue << "+"
 			end
-			return ""
 		end
+		return clue
 	end
 end
