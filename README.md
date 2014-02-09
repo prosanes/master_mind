@@ -12,7 +12,7 @@ It is based on the exercise proposed by Uncle Bob's screen cast in [Episode 9, S
 
 ### Secret Code Holder
 
-A [SecretCodeHolder](secret_code.rb) is responsible for inventing a code with 4 letters and answering clues to the guesser.
+A [SecretCodeHolder](secret_code_holder.rb) is responsible for inventing a code with 4 letters and answering clues to the guesser.
 For each letter that is in the correct position, the clue has a "+".
 For each letter that is in the incorrect position, the clue has a "-".
 
@@ -20,5 +20,5 @@ For each letter that is in the incorrect position, the clue has a "-".
 If the secret code is "AABB" and the guess is "BBAE", the clue is "---".
 If the secret code is "ABCD" and the guess is "ACDB", the clue is "+---".
 
-More examples should be easly readable in SecretCodeHolder [spec file](secret_code_holder.rb)
+More examples should be easly readable in SecretCodeHolder [spec file](secret_code_holder_spec.rb)
 
