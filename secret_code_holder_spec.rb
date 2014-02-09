@@ -54,12 +54,8 @@ describe SecretCodeHolder do
 			clue = sch.get_clue_based_on(guess: "_BCD")
 			expect(clue.scan("+").count).to eq(3)
 
-			answers_the_correct_count_of_pluses("A_CD")
-		end
-
-		def answers_the_correct_count_of_pluses(guess: nil, num_plusses: nil) do
-			clue = sch.get_clue_based_on(guess: guess)
-			expect(clue.scan("+").count).to eq(num_plusses)
+			clue = sch.get_clue_based_on(guess: "A_CD")
+			expect(clue.scan("+").count).to eq(3)
 		end
 	end
 
@@ -67,8 +63,31 @@ describe SecretCodeHolder do
 		let(:sch) { SecretCodeHolder.new(secret_code: "ABCD") }
 
 		it "answers 1 '-' if there is only one letter in the code but in the wrong position" do
-			clue = sch.get_clue_based_on(guess: "ABC_")
-			expect(clue.scan("+").count).to eq(3)
+			clue = sch.get_clue_based_on(guess: "_A__")
+			expect(clue.scan("-").count).to eq(1)
+		end
+
+		it "answers 2 '-' if there are 2 letters in the code but in the wrong possition" do
+			clue = sch.get_clue_based_on(guess: "_AB_")
+			expect(clue.scan("-").count).to eq(2)
+
+			clue = sch.get_clue_based_on(guess: "_A_B")
+			expect(clue.scan("-").count).to eq(2)
+		end
+
+		it "answers 3 '-' if there are 3 letters in the code but in the wrong possition" do
+			clue = sch.get_clue_based_on(guess: "_ABC")
+			expect(clue.scan("-").count).to eq(3)
+		end
+
+		it "answers 4 '-' if there are 4 letters in the code but in the wrong possition" do
+			clue = sch.get_clue_based_on(guess: "DABC")
+			expect(clue.scan("-").count).to eq(4)
+		end
+
+		it "doesnt answer 2 '-' if there is two letters in the guess but only one in the secret code on the incorrect possition" do
+			clue = sch.get_clue_based_on(guess: "_AAA")
+			expect(clue.scan("-").count).to eq(1)
 		end
 	end
 
