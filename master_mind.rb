@@ -1,3 +1,0 @@
-def answer
-	false
-end
