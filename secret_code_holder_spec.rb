@@ -26,7 +26,7 @@ describe SecretCodeHolder do
 	end
 
 	context "answers '+'s correctely" do
-		it "answers one '+' if there is only one letter in the correct position" do
+		it "answers 1 '+' if there is only 1 letter in the correct position" do
 			sch = SecretCodeHolder.new(secret_code: "ABCD")
 
 			clue = sch.get_clue_based_on(guess: "A___")
@@ -36,7 +36,7 @@ describe SecretCodeHolder do
 			expect(clue.scan("+").count).to eq(1)
 		end
 
-		it "answers 2 '+' if there is 2 letters in the correct position" do
+		it "answers 2 '+' if there are only 2 letters in the correct position" do
 			sch = SecretCodeHolder.new(secret_code: "ABCD")
 
 			clue = sch.get_clue_based_on(guess: "AB__")
@@ -47,6 +47,19 @@ describe SecretCodeHolder do
 
 			clue = sch.get_clue_based_on(guess: "A__D")
 			expect(clue.scan("+").count).to eq(2)
+		end
+
+		it "answers 3 '+' if there are only 3 letters in the correct position" do
+			sch = SecretCodeHolder.new(secret_code: "ABCD")
+
+			clue = sch.get_clue_based_on(guess: "ABC_")
+			expect(clue.scan("+").count).to eq(3)
+
+			clue = sch.get_clue_based_on(guess: "_BCD")
+			expect(clue.scan("+").count).to eq(3)
+
+			clue = sch.get_clue_based_on(guess: "A_CD")
+			expect(clue.scan("+").count).to eq(3)
 		end
 	end
 
