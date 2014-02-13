@@ -3,8 +3,8 @@ class CodeBreaker
 	attr_reader :made_correct_guess
 	alias_method :made_correct_guess?, :made_correct_guess
 
-	def initialize(initial_guess:"AABB")
-		@current_guess = String.new(initial_guess)
+	def initialize(initial_guess:nil)
+		@current_guess = DeepClone.clone(initial_guess)
 		@made_correct_guess = false
 	end
 
@@ -13,7 +13,7 @@ class CodeBreaker
 			@made_correct_guess = true 
 		else 
 			@made_correct_guess = false
-			@current_guess << "A"
+			@current_guess.next!
 		end
 	end
 

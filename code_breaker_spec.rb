@@ -4,10 +4,6 @@ describe CodeBreaker do
 	context "initialization" do
 		let(:cb) { CodeBreaker.new }
 
-		it "defaults first guess that enables the code to be broken in less then five guesses" do
-			expect(cb.current_guess).to eq("AABB")
-		end
-
 		it "doesnt know if the initial guess is correct" do
 			expect(cb.made_correct_guess?).to be_false
 		end
