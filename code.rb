@@ -1,10 +1,10 @@
 require "deep_clone"
 
 class Code
-	NUM_SLOTS = 4
-	NUM_COLORS = 6
+	NUM_PEGS = 4
+	NUM_PEG_STATES = 6
 
-	@array_representation = Array.new(NUM_SLOTS)
+	@array_representation = Array.new(NUM_PEGS)
 	attr_accessor :array_representation
 
 	def initialize(array_representation:[])
@@ -13,12 +13,12 @@ class Code
 	end
 
 		def raise_error_on_invalid_representation(array)
-			if array.size != NUM_SLOTS
+			if array.size != NUM_PEGS
 				raise InvalidCodeRepresentation, 
-					"#{array.size} pins were given, expected #{NUM_SLOTS}"
+					"#{array.size} pins were given, expected #{NUM_PEGS}"
 			end
 			array.each do |pin|
-				if pin <= 0 || pin >= 7
+				if pin < 1 || pin > NUM_PEG_STATES
 					raise InvalidCodeRepresentation
 				end
 			end
