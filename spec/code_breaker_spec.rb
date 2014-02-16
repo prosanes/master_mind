@@ -18,7 +18,7 @@ describe CodeBreaker do
 	it "makes a new guess based on informations given" do
 		last_guess = "AAAA"
 		cb = CodeBreaker.new(initial_guess:last_guess)
-		(1..1024).each do |i|
+		(1..4).each do |i|
 			cb.receive_clue_for_current_guess(clue:"")
 			cb.current_guess.should_not eq(last_guess)
 			last_guess = String.new cb.current_guess
