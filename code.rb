@@ -42,41 +42,41 @@ class Code
 
 	def give_score_compared_to(other_code)
 		clue = ""
-		clue, remaining_guess_letters, already_inspectioned = 
+		correct_pos, remaining_guess_letters, already_inspectioned = 
 			get_in_correct_position_score(other_code)
-		clue << get_in_wrong_position_score(remaining_guess_letters, already_inspectioned)
-		return clue
+		wrong_pos = get_in_wrong_position_score(remaining_guess_letters, already_inspectioned)
+		return ('+'*correct_pos) + ('-'*wrong_pos)
 	end
 
 	private
 		def get_in_correct_position_score(guess)
 			already_inspectioned = Array.new(@array_representation.size) { false	}
 			remaining_guess_letters = DeepClone.clone(guess)
-			clue = ""
+			n = 0
 
 			guess.each_index do |i|
 				if guess[i] == @array_representation[i]
-					clue << "+"
+					n += 1
 					already_inspectioned[i] = true
 					remaining_guess_letters.delete_at(i)
 				end
 			end
 
-			return clue, remaining_guess_letters, already_inspectioned
+			return n, remaining_guess_letters, already_inspectioned
 		end
 
 		def get_in_wrong_position_score(remaining_guess_letters, already_inspectioned)
-			clue = ""
+			n = 0
 			remaining_guess_letters.each do |guess_char|
 				@array_representation.each_index do |i|
 					if guess_char == @array_representation[i] and not already_inspectioned[i]
-						clue << "-"
+						n += 1
 						already_inspectioned[i] = true
 						break
 					end
 				end
 			end
-			return clue
+			return n
 		end
 end
 
