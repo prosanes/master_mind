@@ -8,12 +8,14 @@ class Code
 	@array_representation = Array.new(NUM_PEGS)
 	attr_accessor :array_representation
 
+	
 	def initialize(array_representation:[], score_class:Score)
 		raise_error_on_invalid_representation(array_representation)
 		@array_representation = array_representation
 		@score_class = score_class
 	end
 
+		private
 		def raise_error_on_invalid_representation(array)
 			if array.size != NUM_PEGS
 				raise InvalidCodeRepresentation, 
@@ -25,6 +27,19 @@ class Code
 				end
 			end
 		end
+
+	public
+	def next!
+		(NUM_PEGS-1).downto(0).each do |i|
+			next_state = (@array_representation[i] + 1) % (NUM_PEG_STATES+1)
+			@array_representation[i] = next_state
+			if next_state == 0
+				@array_representation[i] += 1
+			else
+				break
+			end
+		end
+	end
 
 	def each(&block)
 		@array_representation.each(&block)

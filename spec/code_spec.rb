@@ -22,6 +22,28 @@ describe Code do
 			}.to raise_error(InvalidCodeRepresentation)
 		end
 	end
+
+	describe "#next!" do
+		it "works on code like a rolling number	display" do
+			high_limit = Code::NUM_PEG_STATES
+			c = Code.new(array_representation:[1,1,1,1])
+			c[Code::NUM_PEGS-1].should eq(1)
+			c.next!
+			c[Code::NUM_PEGS-1].should eq(2)
+
+			c = Code.new(array_representation:[1,1,1,high_limit])
+			c.next!
+			c[Code::NUM_PEGS-1].should eq(1)
+			c[Code::NUM_PEGS-2].should eq(2)
+
+			c = Code.new(array_representation:[high_limit,high_limit,high_limit,high_limit])
+			c.next!
+			c[Code::NUM_PEGS-1].should eq(1)
+			c[Code::NUM_PEGS-2].should eq(1)
+			c[Code::NUM_PEGS-2].should eq(1)
+			c[Code::NUM_PEGS-3].should eq(1)
+		end
+	end
 	
 	context "Subclass" do
 		describe CodeLetters do
