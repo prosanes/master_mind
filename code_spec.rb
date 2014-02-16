@@ -118,21 +118,22 @@ describe Code do
 		c1 = CodeLetters.new(code1)
 		c2 = CodeLetters.new(code2)
 		clue = c1.give_score_compared_to(c2)
-		expect(clue.scan("-").count).to eq(expected_amount)
+		clue.wrong_position.should eq(expected_amount)
 	end
 
 	def assert_score_in_correct_position_when_comparing(code1:"", code2:"", expected_amount:0)
 		c1 = CodeLetters.new(code1)
 		c2 = CodeLetters.new(code2)
 		clue = c1.give_score_compared_to(c2)
-		expect(clue.scan("+").count).to eq(expected_amount)
+		clue.correct_position.should eq(expected_amount)
 	end
 
 	def assert_score_when_comparing(code1:"", code2:"", expected_score:"")
 		c1 = CodeLetters.new(code1)
 		c2 = CodeLetters.new(code2)
 		clue = c1.give_score_compared_to(c2)
-		expect(clue).to eq(expected_score)
+		s = ScorePlusMinus.new(expected_score)
+		expect(clue).to eq(s)
 	end
 
 end

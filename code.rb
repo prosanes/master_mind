@@ -1,4 +1,5 @@
 require "deep_clone"
+require './score'
 
 class Code
 	NUM_PEGS = 4
@@ -7,9 +8,10 @@ class Code
 	@array_representation = Array.new(NUM_PEGS)
 	attr_accessor :array_representation
 
-	def initialize(array_representation:[])
+	def initialize(array_representation:[], score_class:Score)
 		raise_error_on_invalid_representation(array_representation)
 		@array_representation = array_representation
+		@score_class = score_class
 	end
 
 		def raise_error_on_invalid_representation(array)
@@ -41,11 +43,11 @@ class Code
 	end
 
 	def give_score_compared_to(other_code)
-		clue = ""
-		correct_pos, remaining_guess_letters, already_inspectioned = 
+		correct, remaining_guess_letters, already_inspectioned = 
 			get_in_correct_position_score(other_code)
-		wrong_pos = get_in_wrong_position_score(remaining_guess_letters, already_inspectioned)
-		return ('+'*correct_pos) + ('-'*wrong_pos)
+		wrong = get_in_wrong_position_score(remaining_guess_letters, already_inspectioned)
+
+		@score_class.new(correct_position:correct, wrong_position:wrong)
 	end
 
 	private
