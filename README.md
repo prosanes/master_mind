@@ -12,10 +12,10 @@ It is based on the exercise proposed by Uncle Bob's screen cast in [Episode 9, S
 
 ### <a name="code"></a>Code
 
-A [Code](code.rb) is defined by disposed order of pegs, where each peg can have a different color (state).
+A [Code](domain/code.rb) is defined by disposed order of pegs, where each peg can have a different color (state).
 The default configuration is 4 pegs and 6 colors.
 
-A [Code](code.rb) can be compared to each other and it gives a [Score](#score) for this comparison
+A [Code](domain/code.rb) can be compared to each other and it gives a [Score](#score) for this comparison
 
 ### <a name="score"></a>Score
 
@@ -28,13 +28,14 @@ Where '+' represents a peg in the same position, and '-' a peg in both codes but
 * If the secret code is "AABB" and the guess is "BBAE", the score is "---".
 * If the secret code is "ABCD" and the guess is "ACDB", the score is "+---".
 
-More examples should be easly readable in Code [spec file](code_spec.rb)
+More examples should be easly readable in Code [spec file](spec/unit/code_spec.rb)
 
 ### Secret Code Holder
 
-A [SecretCodeHolder](secret_code_holder.rb) is responsible for holding a code and answering clues to the guesser.
+A [SecretCodeHolder](domain/secret_code_holder.rb) is responsible for holding a code and answering clues to the guesser.
 
 ### Code Breaker
 
-The [CodeBreaker](code_breaker.rb) is responsible for breaking the code.
+The [CodeBreaker](domain/code_breaker.rb) is responsible for breaking the code.
+
 It starts with a guess, then receive a score for this current guess and makes a new guess.
