@@ -1,4 +1,4 @@
-require './code'
+require './domain/code'
 
 describe Code do
 	context "Code initialization" do

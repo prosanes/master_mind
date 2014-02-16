@@ -1,4 +1,4 @@
-require './score'
+require './domain/score'
 
 describe Score do
 	it "represents how many pins are in the correct position" do

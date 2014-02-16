@@ -1,4 +1,4 @@
-require './secret_code_holder'
+require './domain/secret_code_holder'
 
 describe SecretCodeHolder do
 

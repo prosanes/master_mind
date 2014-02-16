@@ -1,4 +1,4 @@
-require './code_breaker'
+require './domain/code_breaker'
 
 describe CodeBreaker do
 	it "inializes with a initial_guess" do

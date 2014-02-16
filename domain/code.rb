@@ -1,5 +1,5 @@
 require "deep_clone"
-require './score'
+require './domain/score'
 
 class Code
 	NUM_PEGS = 4
