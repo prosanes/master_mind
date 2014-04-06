@@ -107,4 +107,12 @@ class CodeLetters < Code
 		end
 		super(array_representation:array_representation)
 	end
+
+	def to_s
+		letters_representation = ""
+		@array_representation.each do |i|
+			letters_representation += (i-1 + 'A'.ord).chr
+		end
+		letters_representation
+	end
 end

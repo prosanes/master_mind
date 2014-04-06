@@ -50,6 +50,10 @@ describe Code do
 			it "creates a code with a letter representation" do
 				CodeLetters.new("ABCD")
 			end
+
+			it "prints corretly" do
+				CodeLetters.new("ABCD").to_s.should eq("ABCD")
+			end
 		end
 	end
 
