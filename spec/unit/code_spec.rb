@@ -18,7 +18,7 @@ describe Code do
 
 		def expect_to_raise_invalid_code_representation(array)
 			expect {
-				Code.new(array_representation:[1,1,1,1,1])
+				Code.new(array_representation:array)
 			}.to raise_error(InvalidCodeRepresentation)
 		end
 	end
