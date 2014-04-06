@@ -32,7 +32,7 @@ More examples should be easly readable in Code [spec file](spec/unit/code_spec.r
 
 ### Secret Code Holder
 
-A [SecretCodeHolder](domain/secret_code_holder.rb) is responsible for holding a code and answering clues to the guesser.
+A [SecretCodeHolder](domain/secret_code_holder.rb) is responsible for holding a code and answering scores to the guesser.
 
 ### Code Breaker
 

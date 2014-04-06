@@ -9,9 +9,9 @@ describe "Integration of Code, CodeBreaker, SecretCodeHolder" do
 
 		found_correct_code = false
 		(1..1025).each do
-			clue = holder.get_clue_based_on(guess:breaker.current_guess)
-			breaker.receive_clue_for_current_guess(clue:clue)
-			if clue.correct_position == Code::NUM_PEGS
+			score = holder.get_score_based_on(guess:breaker.current_guess)
+			breaker.receive_score_for_current_guess(score:score)
+			if score.correct_position == Code::NUM_PEGS
 				found_correct_code = true
 			end
 		end

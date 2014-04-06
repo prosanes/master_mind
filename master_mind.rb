@@ -22,7 +22,7 @@ def main
 			score = ScorePlusMinus.new(score_input)
 
 			if score.correct_position != Code::NUM_PEGS
-				codeBreaker.receive_clue_for_current_guess(clue:score)
+				codeBreaker.receive_score_for_current_guess(score:score)
 			else
 				break
 			end
@@ -35,8 +35,8 @@ def main
 			puts "Waiting for your guess..."
 			code = get_code_from_stdin
 
-			clue = holder.get_clue_based_on(guess:code)
-			puts "The clue is #{clue.to_s}"
+			score = holder.get_score_based_on(guess:code)
+			puts "The score is #{score.to_s}"
 		end
 	end
 

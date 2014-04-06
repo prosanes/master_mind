@@ -5,7 +5,7 @@ class CodeBreaker
 		@current_guess = DeepClone.clone(initial_guess)
 	end
 
-	def receive_clue_for_current_guess(clue)
+	def receive_score_for_current_guess(score)
 		@current_guess.next!
 	end
 

@@ -143,23 +143,23 @@ describe Code do
 	def assert_score_in_wrong_position_when_comparing(code1:"", code2:"", expected_amount:0)
 		c1 = CodeLetters.new(code1)
 		c2 = CodeLetters.new(code2)
-		clue = c1.give_score_compared_to(c2)
-		clue.wrong_position.should eq(expected_amount)
+		score = c1.give_score_compared_to(c2)
+		score.wrong_position.should eq(expected_amount)
 	end
 
 	def assert_score_in_correct_position_when_comparing(code1:"", code2:"", expected_amount:0)
 		c1 = CodeLetters.new(code1)
 		c2 = CodeLetters.new(code2)
-		clue = c1.give_score_compared_to(c2)
-		clue.correct_position.should eq(expected_amount)
+		score = c1.give_score_compared_to(c2)
+		score.correct_position.should eq(expected_amount)
 	end
 
 	def assert_score_when_comparing(code1:"", code2:"", expected_score:"")
 		c1 = CodeLetters.new(code1)
 		c2 = CodeLetters.new(code2)
-		clue = c1.give_score_compared_to(c2)
+		score = c1.give_score_compared_to(c2)
 		s = ScorePlusMinus.new(expected_score)
-		expect(clue).to eq(s)
+		expect(score).to eq(s)
 	end
 
 end

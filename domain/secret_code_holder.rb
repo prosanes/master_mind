@@ -5,7 +5,7 @@ class SecretCodeHolder
 		@secret_code = secret_code
 	end
 
-	def get_clue_based_on(guess:guess)
+	def get_score_based_on(guess:guess)
 		@secret_code.give_score_compared_to(guess)
 	end
 

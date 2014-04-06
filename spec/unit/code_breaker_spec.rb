@@ -10,16 +10,16 @@ describe CodeBreaker do
 		expect(cb.current_guess).to eq("AABB")
 	end
 
-	it "accepts a clue for the current guess" do
+	it "accepts a score for the current guess" do
 		cb = CodeBreaker.new(initial_guess:"AABB")
-		cb.receive_clue_for_current_guess("+++-")
+		cb.receive_score_for_current_guess("+++-")
 	end
 
 	it "makes a new guess based on informations given" do
 		last_guess = "AAAA"
 		cb = CodeBreaker.new(initial_guess:last_guess)
 		(1..4).each do |i|
-			cb.receive_clue_for_current_guess(clue:"")
+			cb.receive_score_for_current_guess(score:"")
 			cb.current_guess.should_not eq(last_guess)
 			last_guess = String.new cb.current_guess
 		end
