@@ -29,8 +29,20 @@ class ScorePlusMinus < Score
 
 	def to_s
 		string = ""
-		correct_position.times { string += "+" }
-		wrong_position.times { string += "-" }
+		@correct_position.times { string += "+" }
+		@wrong_position.times { string += "-" }
 		string
+	end
+end
+
+def ScorePlusMinus(value)
+	if value.class == Score
+		string = ""
+		value.correct_position.times { string += "+" }
+		value.wrong_position.times { string += "-" }
+		string
+		ScorePlusMinus.new(string)
+	else
+		ScorePlusMinus.new(value)
 	end
 end

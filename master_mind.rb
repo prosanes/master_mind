@@ -35,9 +35,15 @@ def main
 			puts "Waiting for your guess..."
 			code = get_code_from_stdin
 
-			score = holder.get_score_based_on(guess:code)
-			puts "The score is #{score.to_s}"
+			score = ScorePlusMinus(holder.get_score_based_on(guess:code))
+			if score.correct_position != Code::NUM_PEGS
+				puts "The score is #{score.to_s}"
+			else
+				break
+			end
 		end
+
+		puts "You found the code!"
 	end
 
 end

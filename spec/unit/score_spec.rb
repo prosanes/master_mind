@@ -37,4 +37,9 @@ describe ScorePlusMinus do
 		string = ScorePlusMinus.new("+++-").to_s
 		string.should eq "+++-"
 	end
+
+	it "converts a Score to a ScorePlusMinus" do
+		s = Score.new(correct_position: 2, wrong_position: 2)
+		ScorePlusMinus(s).class.should eq ScorePlusMinus
+	end
 end
