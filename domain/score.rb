@@ -26,4 +26,11 @@ class ScorePlusMinus < Score
 	def ==(other)
 		super.==(new(other))
 	end
+
+	def to_s
+		string = ""
+		correct_position.times { string += "+" }
+		wrong_position.times { string += "-" }
+		string
+	end
 end

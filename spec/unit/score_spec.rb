@@ -24,9 +24,17 @@ describe Score do
 end
 
 describe ScorePlusMinus do
-	it "inializes with string '-' and '+'" do
-		s = ScorePlusMinus .new("++-")
+	it "initializes with string '-' and '+'" do
+		s = ScorePlusMinus.new("++-")
 		s.correct_position.should eq(2)
 		s.wrong_position.should eq(1)
+	end
+
+	it "prints '+' and '-' correctly" do
+		string = ScorePlusMinus.new("++--").to_s
+		string.should eq "++--"
+
+		string = ScorePlusMinus.new("+++-").to_s
+		string.should eq "+++-"
 	end
 end
